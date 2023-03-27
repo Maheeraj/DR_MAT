@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "913901371461",
+    "project_id": "dr-mat",
+    "storage_bucket": "dr-mat.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:913901371461:android:04fde8070273c8718f232c",
+        "android_client_info": {
+          "package_name": "com.example.firstapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "913901371461-e13qeug2kil4eafeofiiuqc4u42r004k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCZhV8l1UDCklZlin4i0oO-LjtV-df9qNk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "913901371461-e13qeug2kil4eafeofiiuqc4u42r004k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
