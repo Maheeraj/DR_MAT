@@ -159,7 +159,7 @@ class _AppointmentState extends State<Appointment> {
                           SchedulerBinding.instance.addPostFrameCallback((_) {
                             //Navigator.push(context,
                             //MaterialPageRoute(builder: (context) => Fever()));
-                            var duration=Duration(seconds: 10);
+                            var duration=Duration(seconds: 8);
                             Timer(duration, () {
                               Navigator.push(context,
                                   MaterialPageRoute(builder: (context) => rfid()));
@@ -190,7 +190,7 @@ class _AppointmentState extends State<Appointment> {
                         SchedulerBinding.instance.addPostFrameCallback((_) {
                           //Navigator.push(context,
                           //MaterialPageRoute(builder: (context) => Fever()));
-                          var duration = Duration(seconds: 10);
+                          var duration = Duration(seconds: 8);
                           Timer(duration, () {
                             Navigator.push(context,
                                 MaterialPageRoute(builder: (context) => Exit()));
@@ -210,7 +210,7 @@ class _AppointmentState extends State<Appointment> {
                       ),
                     ),
                     tween: Tween<double>(begin: 0,end: 1,),
-                    duration: Duration(seconds: 5),
+                    duration: Duration(seconds: 4),
                     builder :(BuildContext context,double _op,Widget? child){
                       return Opacity(
                         opacity: _op,

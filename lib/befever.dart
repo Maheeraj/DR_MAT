@@ -68,21 +68,22 @@ class _befeverState extends State<befever> {
             (query: ref1,
               defaultChild: Text(''),
               itemBuilder: (context,snapshot,animation,index){
-                String val=snapshot.child('rate').value.toString();
-                //String val1=snapshot.child('temp').value.toString();
-                double val1=double.parse(val);
-                //final val1=ModalRoute.of(context)?.settings.arguments as int;
-                print("Heart rate is :");
-                print(val1);
-                SchedulerBinding.instance.addPostFrameCallback((_) {
-                  //Navigator.push(context,
-                  //MaterialPageRoute(builder: (context) => Fever()));
-                  var duration=Duration(seconds: 15);
-                  Timer(duration, () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Fever()));
-                  });
+                var duration=Duration(seconds: 12);
+                Timer(duration, () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Fever()));
                 });
+                // String val=snapshot.child('rate').value.toString();
+                // //String val1=snapshot.child('temp').value.toString();
+                // double val1=double.parse(val);
+                // //final val1=ModalRoute.of(context)?.settings.arguments as int;
+                // print("Heart rate is :");
+                // print(val1);
+                // SchedulerBinding.instance.addPostFrameCallback((_) {
+                //   //Navigator.push(context,
+                //   //MaterialPageRoute(builder: (context) => Fever()));
+                //
+                // });
 
 
                 return  Center(

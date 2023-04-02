@@ -43,6 +43,7 @@ dependencies:
   chewie: ^1.3.6
   video_player: ^2.4.10
   http: ^0.13.5
+  url_launcher: ^6.1.10
 
 dev_dependencies:
   flutter_test:
@@ -74,15 +75,16 @@ flutter:
     - assets/rfid1.png
     - assets/outscreen22.png
     - assets/appoint.png
-    - assets/Fever1.png
+    - assets/Fever2.png
     - assets/info1.mp4
     - assets/card1.mp4
     - assets/Thankyou1.mp4
     - assets/Exit1.mp4
-    - assets/corona1.mp4
+    - assets/corona2.mp4
     - assets/tempsensorslide.mp4
-    - assets/sentime.mp4
+    - assets/sentime1.mp4
     - assets/befever.mp4
+    - assets/triage.mp4
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

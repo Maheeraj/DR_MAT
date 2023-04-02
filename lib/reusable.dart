@@ -1,4 +1,4 @@
-void pushdata(String s)
+void pushdata(String s, String a)
 {
   String a=s;
  //return a;

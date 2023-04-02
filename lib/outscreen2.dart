@@ -98,24 +98,25 @@ class _outscreen2State extends State<outscreen2> {
                       print(" FB Temperature  is :");
                       print(val1);
                       double tdd = double.parse(tempdata);
-                      tdd+=20;
-                      print(tempdata + 'bly :');
+                      //tdd+=20;
+                      print(tempdata);
 
-                      if (tdd > 98.7) {
+                      if (tdd> 98.7) {
                         print("printed");
-                        //for(int i=0;i<3000;i++);
-                        SchedulerBinding.instance.addPostFrameCallback((_) {
-                          //Navigator.push(context,
-                          //MaterialPageRoute(builder: (context) => Fever()));
-                          var duration = Duration(seconds: 8);
-                          Timer(duration, () {
-                            Navigator.push(context,
-                                MaterialPageRoute(
-                                    builder: (context) => befever()));
-                          });
+                        var duration = Duration(seconds: 8);
+                        Timer(duration, () {
+                          Navigator.push(context,
+                              MaterialPageRoute(
+                                  builder: (context) => befever()));
                         });
+                        //for(int i=0;i<3000;i++);
+                        // SchedulerBinding.instance.addPostFrameCallback((_) {
+                        //   //Navigator.push(context,
+                        //   //MaterialPageRoute(builder: (context) => Fever()));
+                        //
+                        // });
                       }
-                      else if (tdd < 98.7) {
+                      else if (val1 < 98.7) {
                         SchedulerBinding.instance.addPostFrameCallback((_) {
                           //Navigator.push(context,
                           //MaterialPageRoute(builder: (context) => Fever()));

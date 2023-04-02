@@ -26,7 +26,7 @@ class Corona extends StatefulWidget {
 
 class _CoronaState extends State<Corona> {
 
-  final VideoPlayerController videoPlayerController = VideoPlayerController.asset("assets/corona1.mp4");
+  final VideoPlayerController videoPlayerController = VideoPlayerController.asset("assets/corona2.mp4");
   final auth =FirebaseAuth.instance;
   final ref1= FirebaseDatabase.instance.ref('Oxygen');
 
@@ -62,24 +62,24 @@ class _CoronaState extends State<Corona> {
           Expanded(child: Chewie(controller: chewieController!,),),
           FirebaseAnimatedList
             (query: ref1,
-              defaultChild: Text('Loading'),
+              defaultChild: Text('...'),
               itemBuilder: (context,snapshot,animation,index){
-                String val=snapshot.child('rate').value.toString();
-                //String val1=snapshot.child('temp').value.toString();
-                double val1=double.parse(val);
-                //final val1=ModalRoute.of(context)?.settings.arguments as int;
-                print("Heart rate is :");
-                print(val1);
-                /*SchedulerBinding.instance.addPostFrameCallback((_) {
-                  //Navigator.push(context,
-                  //MaterialPageRoute(builder: (context) => Fever()));
-                  var duration=Duration(seconds: 6);
-                  Timer(duration, () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Appointment()));
-                  });
-                });
-                */
+                // String val=snapshot.child('rate').value.toString();
+                // //String val1=snapshot.child('temp').value.toString();
+                // double val1=double.parse(val);
+                // //final val1=ModalRoute.of(context)?.settings.arguments as int;
+                // print("Heart rate is :");
+                // print(val1);
+                // /*SchedulerBinding.instance.addPostFrameCallback((_) {
+                //   //Navigator.push(context,
+                //   //MaterialPageRoute(builder: (context) => Fever()));
+                //   var duration=Duration(seconds: 6);
+                //   Timer(duration, () {
+                //     Navigator.push(context,
+                //         MaterialPageRoute(builder: (context) => Appointment()));
+                //   });
+                // });
+                // */
 
                 return  Center(
                   child: SizedBox(

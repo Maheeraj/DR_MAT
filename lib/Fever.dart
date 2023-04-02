@@ -8,6 +8,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firstapp/Appointment.dart';
 import 'package:firstapp/Corona.dart';
 import 'package:firstapp/infopage.dart';
+import 'package:firstapp/triage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:http/http.dart';
@@ -66,7 +67,7 @@ class _FeverState extends State<Fever> {
         height:double.infinity,
         decoration:BoxDecoration(
           image: DecorationImage(
-              image: AssetImage("assets/Fever1.png"),
+              image: AssetImage("assets/Fever2.png"),
               fit: BoxFit.cover
           ),
         ),
@@ -94,7 +95,7 @@ class _FeverState extends State<Fever> {
               Expanded(
                   child: FirebaseAnimatedList            // Temp value from firebase
                     (query: ref,
-                      defaultChild: Text('Loading'),
+                      defaultChild: Text('...'),
                       itemBuilder: (context,snapshot,animation,index){
                         String val=snapshot.child('spo2').value.toString();
                         //String val1=snapshot.child('temp').value.toString();
@@ -102,10 +103,10 @@ class _FeverState extends State<Fever> {
                         //final val1=ModalRoute.of(context)?.settings.arguments as int;
                         print("SpO2 is :");
                         print(val1);
-                        double sdd = double.parse(spo2data);
+                        int sdd = int.parse(spo2data);
                         //tdd+=20;
-                        print(spo2data + 'bly :');
-                        if(sdd<90)
+                        print('Spo2:' +spo2data );
+                        if((val1<90 && val1>70)||(sdd<90)&&(sdd>70))
                         {
                           print("printed");
                           SchedulerBinding.instance.addPostFrameCallback((_) {
@@ -114,22 +115,38 @@ class _FeverState extends State<Fever> {
                             var duration=Duration(seconds: 8);
                             Timer(duration, () {
                               Navigator.push(context,
-                                  MaterialPageRoute(builder: (context) => Corona()));
+                                  MaterialPageRoute(builder: (context) => triage()));
                             });
                           });
                         }
-                        else if( sdd>90)
+                        else if(val1<70 || sdd<70)
+                        {
+                          print("Go to ICU");
+                          var duration=Duration(seconds: 8);
+                          Timer(duration, () {
+                            Navigator.push(context,
+                                MaterialPageRoute(builder: (context) => Corona()));
+                          });
+                          // SchedulerBinding.instance.addPostFrameCallback((_) {
+                          //   //Navigator.push(context,
+                          //   //MaterialPageRoute(builder: (context) => Fever()));
+                          //
+                          // });
+                        }
+
+                        else if( val1 >90 || sdd>90)
                         {
                           print("printed");
-                          SchedulerBinding.instance.addPostFrameCallback((_) {
-                            //Navigator.push(context,
-                            //MaterialPageRoute(builder: (context) => Fever()));
-                            var duration=Duration(seconds: 10);
-                            Timer(duration, () {
-                              Navigator.push(context,
-                                  MaterialPageRoute(builder: (context) => infopage()));
-                            });
+                          var duration=Duration(seconds: 8);
+                          Timer(duration, () {
+                            Navigator.push(context,
+                                MaterialPageRoute(builder: (context) => infopage()));
                           });
+                          // SchedulerBinding.instance.addPostFrameCallback((_) {
+                          //   //Navigator.push(context,
+                          //   //MaterialPageRoute(builder: (context) => Fever()));
+                          //
+                          // });
                         }
 
                         return  Center(
@@ -143,7 +160,7 @@ class _FeverState extends State<Fever> {
                                 primary: Colors.white, // background
                               ),
                               onPressed: (){},
-                              child: Text(sdd.toString()+' %',
+                              child: Text(val+' %',
                                 style:TextStyle(fontSize: 25,
                                     fontWeight: FontWeight.bold,
                                     color: Colors.black),
@@ -186,7 +203,7 @@ class _FeverState extends State<Fever> {
                       print(val1);
                       double bdd = double.parse(bpmdata);
                       //tdd+=20;
-                      print(bpmdata + 'bly :');
+                      print('BP:'+bpmdata );
 
 
                       return  Center(

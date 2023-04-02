@@ -19,16 +19,15 @@ import 'package:chewie/chewie.dart';
 import 'rfid.dart';
 import 'card.dart';
 
-
-class sensetime extends StatefulWidget {
-  const sensetime({Key? key}) : super(key: key);
+class triage extends StatefulWidget {
+  const triage({Key? key}) : super(key: key);
 
   @override
-  State<sensetime> createState() => _sensetimeState();
+  State<triage> createState() => _triageState();
 }
 
-class _sensetimeState extends State<sensetime> {
-  final VideoPlayerController videoPlayerController = VideoPlayerController.asset("assets/sentime1.mp4");
+class _triageState extends State<triage> {
+  final VideoPlayerController videoPlayerController = VideoPlayerController.asset("assets/triage.mp4");
   final auth =FirebaseAuth.instance;
   final ref1= FirebaseDatabase.instance.ref('Oxygen');
 
@@ -65,22 +64,21 @@ class _sensetimeState extends State<sensetime> {
             (query: ref1,
               defaultChild: Text(''),
               itemBuilder: (context,snapshot,animation,index){
-                // String val=snapshot.child('rate').value.toString();
-                // //String val1=snapshot.child('temp').value.toString();
-                // double val1=double.parse(val);
-                // //final val1=ModalRoute.of(context)?.settings.arguments as int;
-                // print("Heart rate is :");
-                // print(val1);
-                // SchedulerBinding.instance.addPostFrameCallback((_) {
-                //   //Navigator.push(context,
-                //   //MaterialPageRoute(builder: (context) => Fever()));
-                //
-                // });
-                var duration=Duration(seconds: 20);
-                Timer(duration, () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => outscreen2()));
-                });
+               //  String val=snapshot.child('rate').value.toString();
+               //  //String val1=snapshot.child('temp').value.toString();
+               //  double val1=double.parse(val);
+               //  //final val1=ModalRoute.of(context)?.settings.arguments as int;
+               //  print("Heart rate is :");
+               //  print(val1);
+               // /* SchedulerBinding.instance.addPostFrameCallback((_) {
+               //    //Navigator.push(context,
+               //    //MaterialPageRoute(builder: (context) => Fever()));
+               //    var duration=Duration(seconds: 10);
+               //    Timer(duration, () {
+               //      Navigator.push(context,
+               //          MaterialPageRoute(builder: (context) => outscreen2()));
+               //    });
+               //  });*/
 
 
                 return  Center(

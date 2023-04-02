@@ -156,11 +156,11 @@ class _rfidState extends State<rfid> {
                           if(val1==1)
                           {
                             print("Ir1:Yes");
-                            print("Appointment - Yes");
+                            print("RFID- Yes");
                             SchedulerBinding.instance.addPostFrameCallback((_) {
                               //Navigator.push(context,
                               //MaterialPageRoute(builder: (context) => Fever()));
-                              var duration=Duration(seconds: 10);
+                              var duration=Duration(seconds: 8);
                               Timer(duration, () {
                                 Navigator.push(context,
                                     MaterialPageRoute(builder: (context) => card()));
@@ -187,11 +187,11 @@ class _rfidState extends State<rfid> {
                           print(val3);
                           if (val3 == 1) {
                             print("Ir2:Yes");
-                            print("Appointment - No");
+                            print("RFID - No");
                             SchedulerBinding.instance.addPostFrameCallback((_) {
                               //Navigator.push(context,
                               //MaterialPageRoute(builder: (context) => Fever()));
-                              var duration = Duration(seconds: 10);
+                              var duration = Duration(seconds: 8);
                               Timer(duration, () {
                                 Navigator.push(context,
                                     MaterialPageRoute(builder: (context) => Exit()));
@@ -211,7 +211,7 @@ class _rfidState extends State<rfid> {
                         ),
                       ),
                       tween: Tween<double>(begin: 0,end: 1,),
-                      duration: Duration(seconds: 5),
+                      duration: Duration(seconds: 3),
                       builder :(BuildContext context,double _op,Widget? child){
                         return Opacity(
                           opacity: _op,

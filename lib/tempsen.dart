@@ -17,6 +17,7 @@ import 'Fever.dart';
 import 'Corona.dart';
 import 'package:video_player/video_player.dart';
 import 'package:chewie/chewie.dart';
+
 import 'rfid.dart';
 import 'card.dart';
 import 'sensetime.dart';
@@ -34,6 +35,7 @@ class _tempsenState extends State<tempsen> {
   final auth =FirebaseAuth.instance;
   final ref1= FirebaseDatabase.instance.ref('Distance');
   final url = "https://blynk.cloud/external/api/get?token=DVdlR6DDxV7fRK9rLZRVHo38YBPwy1mf&v0";
+  late String urla='';
   static int flag=1;
   String distdata ='';
 
@@ -74,7 +76,15 @@ class _tempsenState extends State<tempsen> {
     super.dispose();
   }
 
-
+  void postData(String urls,var a) async{
+    //assert(a != null);
+    try{
+      print(a);
+      print(urls);
+      final response = await get(Uri.parse(urls));
+      print(response.body);
+    }catch(err){}
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -86,16 +96,19 @@ class _tempsenState extends State<tempsen> {
               defaultChild: Text(''),
               itemBuilder: (context,snapshot,animation,index){
                 String val=snapshot.child('dist').value.toString();
-                //String val1=snapshot.child('temp').value.toString();
                 double val1=double.parse(val);
-                //final val1=ModalRoute.of(context)?.settings.arguments as int;
-                //print("Heart rate is :");
-                //print(val1);
-                double ddd = double.parse(distdata);
+                print(val1);
+                int ddd = int.parse(distdata);
                 if(ddd==1 || val1==1) {
                   SchedulerBinding.instance.addPostFrameCallback((_) {
-                    //Navigator.push(context,
-                    //MaterialPageRoute(builder: (context) => Fever()));
+                    DateTime now = DateTime.now();
+
+                    String currentTimeString = "${now.hour}:${now.minute}:${now.second}";
+                    print(currentTimeString);
+                    //var a='0';
+                    final String urla="https://blynk.cloud/external/api/update?token=DVdlR6DDxV7fRK9rLZRVHo38YBPwy1mf&v4="+currentTimeString;
+                    postData(urla, currentTimeString);
+                    print(urla);
                     var duration = Duration(seconds: 5);
                     Timer(duration, () {
                       Navigator.push(context,
@@ -106,15 +119,16 @@ class _tempsenState extends State<tempsen> {
                 else if(ddd==0 || val1==0)
                   {
                     if(flag==1) {
-                      SchedulerBinding.instance.addPostFrameCallback((_) {
-                        //Navigator.push(context,
-                        //MaterialPageRoute(builder: (context) => Fever()));
-                        var duration = Duration(seconds: 5);
-                        Timer(duration, () {
-                          Navigator.push(context,
-                              MaterialPageRoute(
-                                  builder: (context) => tempsen()));
-                        });
+                      // SchedulerBinding.instance.addPostFrameCallback((_) {
+                      //   //Navigator.push(context,
+                      //   //MaterialPageRoute(builder: (context) => Fever()));
+                      //
+                      // });
+                      var duration = Duration(seconds: 5);
+                      Timer(duration, () {
+                        Navigator.push(context,
+                            MaterialPageRoute(
+                                builder: (context) => tempsen()));
                       });
                       flag=0;
                     }
